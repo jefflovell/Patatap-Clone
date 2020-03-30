@@ -6,6 +6,7 @@
 	<script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.js"></script>
 	<script type="text/paperscript" canvas="myCanvas">
 		
+		//js object of all mapped keys
 		var keyData = {
 			q: {
 				sound: new Howl({
@@ -168,12 +169,18 @@
 		var circles = [];
 
 		function onKeyDown(event) {
+
 			if(keyData[event.key]){
+				// fetch the largest on screen point coordinate pair
 				var maxPoint = new Point(view.size.width, view.size.height);
+
+				//built in method to create a new x,y point with paper instead of math.random()
 				var randomPoint = Point.random();
+
+				//translate the random point to browser width & height constraints
 				var myPoint = maxPoint * randomPoint;
+
 				// the circle must be defined before pushing it to the array.
-				
 				var newCircle = new Path.Circle(myPoint, 500);
 
 				// set the circle color to the color defined in the keyData object for the pressed key
@@ -186,8 +193,6 @@
 				// trying to chain circles.push(new Path.Circle(myPoint,10).fillColor = "orange");
 				// just pushes "orange" to the array because it is the last value returned from the line
 				circles.push(newCircle);
-
-
 			}
 		}
 
