@@ -8,3 +8,14 @@ body, html {
 	height: 100%;
 	margin: 0;
 }
+
+h1 {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	color: rgba(255, 255, 255, .1);
+	font-family: sans-serif;
+	font-weight: 100;
+	text-transform: uppercase;
+}
