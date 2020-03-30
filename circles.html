@@ -4,11 +4,26 @@
 	<title>Circles</title>
 	<script type="text/javascript" src="js/lib/paper-full.js"></script>
 	<script type="text/paperscript" canvas="myCanvas">
+		
+		var circles = [];
+
 		function onKeyDown(event) {
 			var maxPoint = new Point(view.size.width, view.size.height);
 			var randomPoint = Point.random();
 			var myPoint = maxPoint * randomPoint;
-			new Path.Circle(myPoint, 10).fillColor = 'orange';
+			// the circle must be defined before pushing it to the array.
+			// trying to chain circles.push(new Path.Circle(myPoint,10).fillColor = "orange");
+			// just pushes "orange" to the array because it is the last value returned from the line
+			var newCircle = new Path.Circle(myPoint, 500);
+			newCircle.fillColor = "orange";
+			circles.push(newCircle);
+		}
+
+		function onFrame(event){
+			for (var i = 0; i < circles.length; i++){
+				circles[i].fillColor.hue += 1;
+				circles[i].scale(.9);
+			}
 		}
 
 
