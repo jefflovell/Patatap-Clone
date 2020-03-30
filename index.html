@@ -206,6 +206,18 @@
 
 				// scale down the size by 5% on each frame. selected for high frame rate monitors
 				circles[i].scale(.95);
+
+				// remove the circle if it's no longer visible
+				if (circles[i].area < 1){
+					// remove the circle from the canvas
+					circles[i].remove();
+
+					// remove the circle from the array
+					circles.splice(i, 1);
+
+					//logger to see if it's working
+					console.log(circles);
+				}
 			}
 		}
 
